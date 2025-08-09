@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downers Grove Digital - Local Business Technology Consulting</title>
+    <meta name="description" content="Affordable technology consulting for local businesses in Downers Grove. Website development, SEO, system optimization, and more.">
+    <!-- Using CSS-only icons instead of Font Awesome -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.show {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .service-description {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .service-examples {
+            list-style: none;
+        }
+
+        .service-examples li {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-examples li:before {
+            content: "• ";
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* Why Choose Local */
+        .local-benefits {
+            background: #eff6ff;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 4rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .benefit-description {
+            color: #6b7280;
+        }
+
+        /* About Section */
+        .about {
+            background: #f3f4f6;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #2563eb;
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            text-align: center;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-method h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method a {
+            color: #bfdbfe;
+            text-decoration: none;
+        }
+
+        .contact-method a:hover {
+            color: white;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-input {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Downers Grove Digital</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services" onclick="closeMobileMenu()">Services</a>
+            <a href="#about" onclick="closeMobileMenu()">About</a>
+            <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Local Technology Solutions That Actually Make Sense</h1>
+            <p>Affordable, face-to-face consulting for Downers Grove area businesses. From websites to workflows, I help you work smarter, not harder.</p>
+            <a href="#contact" class="btn-primary">Let's Talk About Your Project</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">How I Can Help Your Business</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="service-title">Website Development</h3>
+                    <p class="service-description">From simple landing pages to complete e-commerce sites, built with modern tools.</p>
+                    <ul class="service-examples">
+                        <li>New website creation</li>
+                        <li>Website redesigns</li>
+                        <li>Mobile optimization</li>
+                        <li>E-commerce setup</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="service-title">SEO & Digital Marketing</h3>
+                    <p class="service-description">Help customers find you online with search optimization and marketing strategy.</p>
+                    <ul class="service-examples">
+                        <li>Google My Business setup</li>
+                        <li>Local SEO optimization</li>
+                        <li>Google Ads management</li>
+                        <li>Social media strategy</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">System Optimization</h3>
+                    <p class="service-description">Review your current tools and workflows to find efficiencies and cost savings.</p>
+                    <ul class="service-examples">
+                        <li>Workflow analysis</li>
+                        <li>Software recommendations</li>
+                        <li>Process automation</li>
+                        <li>Cost reduction strategies</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="service-title">Communication Systems</h3>
+                    <p class="service-description">Modern phone systems, video conferencing, and communication tools setup.</p>
+                    <ul class="service-examples">
+                        <li>VoIP phone systems</li>
+                        <li>Video conferencing setup</li>
+                        <li>Team collaboration tools</li>
+                        <li>Customer service systems</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">Design & Print</h3>
+                    <p class="service-description">Marketing materials, brochures, and connecting you with quality print vendors.</p>
+                    <ul class="service-examples">
+                        <li>Brochure design</li>
+                        <li>Business card design</li>
+                        <li>Print vendor sourcing</li>
+                        <li>Brand consistency</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="service-title">Training & Support</h3>
+                    <p class="service-description">Learn how to use AI tools, your CMS, or any software that's giving you trouble.</p>
+                    <ul class="service-examples">
+                        <li>AI tool training</li>
+                        <li>CMS tutorials</li>
+                        <li>Software training</li>
+                        <li>One-on-one coaching</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Why Choose Local -->
+            <div class="local-benefits">
+                <h3 class="section-title" style="margin-bottom: 2rem;">Why Choose Local Consulting?</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4 class="benefit-title">Face-to-Face Service</h4>
+                        <p class="benefit-description">Meet in person when needed. No outsourced support or endless phone trees.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4 class="benefit-title">Never Prohibitive</h4>
+                        <p class="benefit-description">Transparent, fair pricing. Small projects welcome. Payment plans available.</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 class="benefit-title">Quick Response</h4>
+                        <p class="benefit-description">Local means responsive. When you need help, I'm here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Downers Grove Digital</h2>
+                <p>I'm a local technology consultant who believes every business deserves access to modern tools and efficient systems, regardless of size or budget.</p>
+                <p>Whether you need a new website, want to understand AI, or just need someone to show you how to use that CMS you've been struggling with - I'm here to help. No project is too small, and no question is too basic.</p>
+                <p>Based in the Downers Grove area, I work with businesses throughout the western suburbs, offering the personal touch that remote consultants just can't provide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Ready to Get Started?</h2>
+            <p style="text-align: center; font-size: 1.25rem; margin-bottom: 3rem;">Let's discuss your project over coffee. No obligation, no sales pitch - just honest advice about what would work best for your business.</p>
+            
+            <div class="contact-info">
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4>Email</h4>
+                    <a href="mailto:hello@downersgrovedigital.com">hello@downersgrovedigital.com</a>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4>Phone</h4>
+                    <a href="tel:+1234567890">(123) 456-7890</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem; font-weight: bold;">Quick Contact Form</h3>
+                <form id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-grid">
+                        <input type="text" id="name" placeholder="Your Name" class="form-input" required>
+                        <input type="email" id="email" placeholder="Your Email" class="form-input" required>
+                    </div>
+                    <input type="text" id="business" placeholder="Business Name (Optional)" class="form-input" style="width: 100%; margin-bottom: 1rem;">
+                    <textarea id="message" placeholder="Tell me about your project or question..." class="form-textarea" required></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h4>Downers Grove Digital</h4>
+            <p>Local Technology Consulting • Downers Grove, Illinois</p>
+            <p style="font-size: 0.9rem;">&copy; 2025 Downers Grove Digital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('show');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('show');
+        }
+
+        // Contact form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const business = document.getElementById('business').value;
+            const message = document.getElementById('message').value;
+            
+            // For now, just show an alert
+            alert('Thank you for your message! I\'ll get back to you within 24 hours.');
+            
+            // Clear the form
+            document.getElementById('contactForm').reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Close mobile menu if open
+                    closeMobileMenu();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
