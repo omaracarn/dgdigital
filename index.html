@@ -407,7 +407,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                <i class="fas fa-bars"></i>
+                <span class="icon icon-bars"></span>
             </button>
         </div>
         <div class="mobile-menu" id="mobileMenu">
@@ -434,7 +434,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-globe"></i>
+                        <span class="icon icon-globe"></span>
                     </div>
                     <h3 class="service-title">Website Development</h3>
                     <p class="service-description">From simple landing pages to complete e-commerce sites, built with modern tools.</p>
@@ -448,7 +448,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-search"></i>
+                        <span class="icon icon-search"></span>
                     </div>
                     <h3 class="service-title">SEO & Digital Marketing</h3>
                     <p class="service-description">Help customers find you online with search optimization and marketing strategy.</p>
@@ -462,7 +462,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
+                        <span class="icon icon-cogs"></span>
                     </div>
                     <h3 class="service-title">System Optimization</h3>
                     <p class="service-description">Review your current tools and workflows to find efficiencies and cost savings.</p>
@@ -476,7 +476,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-phone"></i>
+                        <span class="icon icon-phone"></span>
                     </div>
                     <h3 class="service-title">Communication Systems</h3>
                     <p class="service-description">Modern phone systems, video conferencing, and communication tools setup.</p>
@@ -490,7 +490,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                        <span class="icon icon-palette"></span>
                     </div>
                     <h3 class="service-title">Design & Print</h3>
                     <p class="service-description">Marketing materials, brochures, and connecting you with quality print vendors.</p>
@@ -504,7 +504,7 @@
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <span class="icon icon-graduation-cap"></span>
                     </div>
                     <h3 class="service-title">Training & Support</h3>
                     <p class="service-description">Learn how to use AI tools, your CMS, or any software that's giving you trouble.</p>
@@ -523,21 +523,21 @@
                 <div class="benefits-grid">
                     <div class="benefit-item">
                         <div class="benefit-icon">
-                            <i class="fas fa-handshake"></i>
+                            <span class="icon icon-handshake"></span>
                         </div>
                         <h4 class="benefit-title">Face-to-Face Service</h4>
                         <p class="benefit-description">Meet in person when needed. No outsourced support or endless phone trees.</p>
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon">
-                            <i class="fas fa-dollar-sign"></i>
+                            <span class="icon icon-dollar-sign"></span>
                         </div>
                         <h4 class="benefit-title">Never Prohibitive</h4>
                         <p class="benefit-description">Transparent, fair pricing. Small projects welcome. Payment plans available.</p>
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon">
-                            <i class="fas fa-clock"></i>
+                            <span class="icon icon-clock"></span>
                         </div>
                         <h4 class="benefit-title">Quick Response</h4>
                         <p class="benefit-description">Local means responsive. When you need help, I'm here.</p>
@@ -568,32 +568,35 @@
             <div class="contact-info">
                 <div class="contact-method">
                     <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                        <span class="icon icon-envelope"></span>
                     </div>
                     <h4>Email</h4>
                     <a href="mailto:hello@downersgrovedigital.com">hello@downersgrovedigital.com</a>
                 </div>
                 <div class="contact-method">
                     <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+                        <span class="icon icon-phone"></span>
                     </div>
                     <h4>Phone</h4>
-                    <a href="tel:+1234567890">(708) 830-0830</a>
+                    <a href="tel:+1234567890">(123) 456-7890</a>
                 </div>
             </div>
 
             <!-- Contact Form -->
             <div class="contact-form">
                 <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem; font-weight: bold;">Quick Contact Form</h3>
-                <form id="contactForm" onsubmit="submitForm(event)">
+                <form id="contactForm" action="https://formspree.io/f/mblkqogd" method="POST" onsubmit="submitForm(event)">
                     <div class="form-grid">
-                        <input type="text" id="name" placeholder="Your Name" class="form-input" required>
-                        <input type="email" id="email" placeholder="Your Email" class="form-input" required>
+                        <input type="text" name="name" id="name" placeholder="Your Name" class="form-input" required>
+                        <input type="email" name="email" id="email" placeholder="Your Email" class="form-input" required>
                     </div>
-                    <input type="text" id="business" placeholder="Business Name (Optional)" class="form-input" style="width: 100%; margin-bottom: 1rem;">
-                    <textarea id="message" placeholder="Tell me about your project or question..." class="form-textarea" required></textarea>
-                    <button type="submit" class="btn-primary">Send Message</button>
+                    <input type="text" name="business" id="business" placeholder="Business Name (Optional)" class="form-input" style="width: 100%; margin-bottom: 1rem;">
+                    <textarea name="message" id="message" placeholder="Tell me about your project or question..." class="form-textarea" required></textarea>
+                    <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
                 </form>
+                <div id="formStatus" style="margin-top: 1rem; text-align: center; display: none;">
+                    <p id="statusMessage"></p>
+                </div>
             </div>
         </div>
     </section>
@@ -620,20 +623,47 @@
         }
 
         // Contact form submission
-        function submitForm(event) {
+        async function submitForm(event) {
             event.preventDefault();
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const business = document.getElementById('business').value;
-            const message = document.getElementById('message').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const formStatus = document.getElementById('formStatus');
+            const statusMessage = document.getElementById('statusMessage');
+            const form = document.getElementById('contactForm');
             
-            // For now, just show an alert
-            alert('Thank you for your message! I\'ll get back to you within 24 hours.');
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
-            // Clear the form
-            document.getElementById('contactForm').reset();
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Success
+                    statusMessage.textContent = '✅ Thank you! Your message has been sent. I\'ll get back to you within 24 hours.';
+                    statusMessage.style.color = '#059669';
+                    formStatus.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                // Error
+                statusMessage.textContent = '❌ Sorry, there was an error sending your message. Please try again or email me directly.';
+                statusMessage.style.color = '#dc2626';
+                formStatus.style.display = 'block';
+            }
+            
+            // Reset button
+            submitBtn.textContent = 'Send Message';
+            submitBtn.disabled = false;
         }
 
         // Smooth scrolling for navigation links
